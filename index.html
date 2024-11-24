@@ -225,33 +225,33 @@
             <p class="blinking-text">Click User Documentation for help!!!</p>
             <form id="taskForm">
                 <div class="form-left">
-                    <h3>Name of Task:</h3>
+                    <h3>Task Name</h3>
                     <input type="text" id="title" required>
                     <p id="taskNameError" style="color: red; font-size: medium; margin: 0; display: none;">No numbers or special characters allowed! Please try again.</p>
 
-                    <h3>Description of Task:</h3>
+                    <h3>Description</h3>
                     <textarea id="description" required></textarea>
                     <p id="wordCount" style="margin: 0;"></p>
                     <span id="descriptionError" style="display: none; color: red;">No numbers or special characters allowed! Please try again</span>
 
-                    <h3>Deadline:</h3>
+                    <h3>Deadline</h3>
                     <input type="date" id="deadline" required>
                 </div>
                 <div class="form-right">
-                    <h3>Team:</h3>
+                    <h3>Team</h3>
                     <select id="team" required>
                         <option value="Development Team">Development Team</option>
                         <option value="Design Team">Design Team</option>
                     </select>
 
-                    <h3>Priority:</h3>
+                    <h3>Priority</h3>
                     <select id="priority" required>
                         <option value="Low">Low: Can be addressed later</option>
                         <option value="Medium">Medium: Needs to be addressed soon</option>
                         <option value="High">High: Needs immediate attention</option>
                     </select>
 
-                    <h3>Assignee:</h3>
+                    <h3>Assignee</h3>
                     <select id="assignee" required>
                         <option value="Member1">Member1</option>
                         <option value="Member2">Member2</option>
@@ -260,7 +260,7 @@
                     <button id="addTaskBtn" class="blinking-btn" type="submit">
                         <i class="fas fa-plus"></i> Add Task
                     </button>
-                    <button type="button" id="resetBtn" class="resetBtn"><i class="fas fa-undo"></i> Reset</button>
+                    <button type="button" id="resetBtn" class="resetBtn"><i class="fas fa-undo"></i> Clear Form</button>
                 </div>
             </form>
         </div>
