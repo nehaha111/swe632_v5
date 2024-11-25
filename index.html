@@ -24,6 +24,7 @@
             max-height: 80vh;
             overflow-y: auto;
         }
+      
         
         /* Sidebar and content styles */
         .sidebar {
@@ -73,6 +74,14 @@
             cursor: pointer;
             font-size: 18px;
         }
+  
+form {
+    border: 2px dashed #007BFF;  /* Adds a dashed blue border */
+    padding: 15px;
+    border-radius: 5px;
+}
+
+
         .sidebar a:hover {
             background-color: #575757;
         }
@@ -135,6 +144,42 @@
 
 #updatePopup textarea {
     height: 100px; /* Set a reasonable height for the description field */
+}
+
+#taskTable {
+    width: 100%;
+    border-collapse: collapse;  /* Removes space between table cells */
+    margin-top: 20px;
+    border: 2px solid #4CAF50; /* Optional: Green border for the table */
+}
+
+#taskTable th, #taskTable td {
+    text-align: left;
+    padding: 12px;
+}
+
+/* Add black border after each row */
+#taskTable tr {
+    border-bottom: 2px solid black; /* Black line after each row */
+}
+
+/* Alternate row color for better readability */
+#taskTable tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect for rows */
+#taskTable tbody tr:hover {
+    background-color: #e1e1e1;
+}
+
+/* Button Styles for Action */
+#taskTable td button {
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
 }
 
         .deleteBtn {
@@ -276,26 +321,29 @@ button:active {
                 </div>
                 <div class="form-right">
                     <h3>Team</h3>
-                    <select id="team" required>
-                        <option value="Development Team">👥 Development Team</option>
-<option value="Design Team">🎨 Design Team</option>
-<option value="Quality Assurance Team">🧪 Quality Assurance Team</option>
-<option value="Business Analyst Team">📊 Business Analyst Team</option>
-<option value="Marketing Team">📈 Marketing Team</option>
-<option value="Support Team">🛠️ Support Team</option>
-<option value="Documentation Team">📑 Documentation Team</option>
+<select id="team" required>
+    <option value="" disabled selected>Click to select a team</option>
+    <option value="Development Team">👥 Development Team</option>
+    <option value="Design Team">🎨 Design Team</option>
+    <option value="Quality Assurance Team">🧪 Quality Assurance Team</option>
+    <option value="Business Analyst Team">📊 Business Analyst Team</option>
+    <option value="Marketing Team">📈 Marketing Team</option>
+    <option value="Support Team">🛠️ Support Team</option>
+    <option value="Documentation Team">📑 Documentation Team</option>
+</select>
 
-                    </select>
                     <h3>Priority</h3>
                     <select id="priority" name="priority">
-                        <option value="low" style="color: green;">🟢 Low</option>
-                        <option value="medium" style="color: yellow;">🟡 Medium</option>
-                        <option value="high" style="color: red;">🔴 High</option>
+                        <option value="" disabled selected>Click to select a priority</option>
+                        <option value="low" style="color: green;">🟢 Low: Needs less attention</option>
+                        <option value="medium" style="color: yellow;">🟡 Medium: Needs attention soon </option>
+                        <option value="high" style="color: red;">🔴 High: Needs immediate attention</option>
                       </select>
                       
 
                     <h3>Assignee</h3>
                     <select id="assignee" required>
+                        <option value="" disabled selected>Click to select an assignee</option>
                         <option value="Member 1">🦁 Member 1</option>
                         <option value="Member 2">🦄 Member 2</option>
                         <option value="Member 3">🐯 Member 3</option>
@@ -325,14 +373,20 @@ button:active {
             <table id="taskTable">
                 <thead>
                     <tr>
-                        <th>Name of Task</th>
-                        <th>Team</th>
-                        <th>Description</th>
-                        <th>Priority</th>
-                        <th>Deadline</th>
-                        <th>Assignee</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th style="color: darkblue;">Task Name</th>
+                        <th style="color: darkblue;">Team</th>
+                        <th style="color: darkblue;">Description</th>
+                        <th style="color: darkblue;">Priority</th>
+
+                        <th style="color: darkblue;">Deadline</th>
+                        
+                        <th style="color: darkblue;">Assignee</th>
+
+                        <th style="color: darkblue;">Status</th>
+                        
+                        
+                        <th style="color: darkblue;">Action</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -379,21 +433,27 @@ button:active {
         <div id="updatePopup" class="popup">
             <h2>Update Task</h2>
             <form id="updateForm">
-                <h3>Name of Task:</h3>
-                <input type="text" id="updateTitle" required>
-                <p id="updateTaskNameError" style="color: red; font-size: medium; margin: 0; display: none;">No numbers or special characters allowed! Please try again.</p>
+                <h3>Task Name</h3>
+<input type="text" id="updateTitle" required>
+<p id="updateTaskNameError" style="color: red; font-size: medium; margin: 0; display: none;">No numbers or special characters allowed! Please try again.</p>
 
-                <h3 for="updateDescription">Description of Task:</h3>
+<label for="updateDescription">Description:</label>
 <textarea id="updateDescription" required></textarea>
 <p id="updateWordCount" style="margin: 0; font-size: 14px; color: #555;">Word count: 0</p>
-<span id="descriptionError" style="display: none; color: red;">No numbers or special characters allowed! Please try again</span>
+<span id="descriptionError" style="display: none; color: red;">No numbers or special characters allowed! Please try again.</span>
+
                 <h3>Deadline:</h3>
                 <input type="date" id="updateDeadline" required>
 
                 <h3>Team:</h3>
                 <select id="updateTeam" required>
-                    <option value="Development Team">Development Team</option>
-                    <option value="Design Team">Design Team</option>
+                    <option value="Development Team">👥 Development Team</option>
+<option value="Design Team">🎨 Design Team</option>
+<option value="Quality Assurance Team">🧪 Quality Assurance Team</option>
+<option value="Business Analyst Team">📊 Business Analyst Team</option>
+<option value="Marketing Team">📈 Marketing Team</option>
+<option value="Support Team">🛠️ Support Team</option>
+<option value="Documentation Team">📑 Documentation Team</option>
                 </select>
 
                 <h3>Priority:</h3>
@@ -405,11 +465,17 @@ button:active {
 
                 <h3>Assignee:</h3>
                 <select id="updateAssignee" required>
-                    <option value="Member1">Member1</option>
-                    <option value="Member2">Member2</option>
+                    <option value="Member 1">🦁 Member 1</option>
+                        <option value="Member 2">🦄 Member 2</option>
+                        <option value="Member 3">🐯 Member 3</option>
+                        <option value="Member 4">🦊 Member 4</option>
+                        <option value="Member 5">🦋 Member 5</option>
+                        <option value="Member 6">🐝 Member 6</option>
                 </select>
 
-                <button type="submit">Save Changes</button>
+                <button type="submit" style="background-color: green; color: white; border: none; padding: 10px 20px; border-radius: 5px;">
+                    💾 Save Changes
+                </button>
                 <button type="button" id="closePopupBtn">Close</button>
             </form>
         </div>
