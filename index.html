@@ -24,6 +24,7 @@
             max-height: 80vh;
             overflow-y: auto;
         }
+        
         /* Sidebar and content styles */
         .sidebar {
             position: fixed;
@@ -95,6 +96,22 @@
             cursor: pointer;
             font-size: 16px;
         }
+        /* Task Priority Colors */
+.low {
+    background-color: green;
+    color: white; /* Make text white for contrast */
+}
+
+.medium {
+    background-color: yellow;
+    color: black; /* Black text for better readability */
+}
+
+.high {
+    background-color: red;
+    color: white; /* Make text white for contrast */
+}
+
         /* Button Colors */
         .updateBtn {
             background-color: orange;
@@ -240,21 +257,31 @@
                 <div class="form-right">
                     <h3>Team</h3>
                     <select id="team" required>
-                        <option value="Development Team">Development Team</option>
-                        <option value="Design Team">Design Team</option>
-                    </select>
+                        <option value="Development Team">👥 Development Team</option>
+<option value="Design Team">🎨 Design Team</option>
+<option value="Quality Assurance Team">🧪 Quality Assurance Team</option>
+<option value="Business Analyst Team">📊 Business Analyst Team</option>
+<option value="Marketing Team">📈 Marketing Team</option>
+<option value="Support Team">🛠️ Support Team</option>
+<option value="Documentation Team">📑 Documentation Team</option>
 
-                    <h3>Priority</h3>
-                    <select id="priority" required>
-                        <option value="Low">Low: Can be addressed later</option>
-                        <option value="Medium">Medium: Needs to be addressed soon</option>
-                        <option value="High">High: Needs immediate attention</option>
                     </select>
+                    <h3>Priority</h3>
+                    <select id="priority" name="priority">
+                        <option value="low" style="color: green;">🟢 Low</option>
+                        <option value="medium" style="color: yellow;">🟡 Medium</option>
+                        <option value="high" style="color: red;">🔴 High</option>
+                      </select>
+                      
 
                     <h3>Assignee</h3>
                     <select id="assignee" required>
-                        <option value="Member1">Member1</option>
-                        <option value="Member2">Member2</option>
+                        <option value="Member 1">🦁 Member 1</option>
+                        <option value="Member 2">🦄 Member 2</option>
+                        <option value="Member 3">🐯 Member 3</option>
+                        <option value="Member 4">🦊 Member 4</option>
+                        <option value="Member 5">🦋 Member 5</option>
+                        <option value="Member 6">🐝 Member 6</option>
                     </select>
 
                     <button id="addTaskBtn" class="blinking-btn" type="submit">
@@ -351,9 +378,9 @@
 
                 <h3>Priority:</h3>
                 <select id="updatePriority" required>
-                    <option value="Low">Low: Can be addressed later</option>
-                    <option value="Medium">Medium: Needs to be addressed soon</option>
-                    <option value="High">High: Needs immediate attention</option>
+                    <option value="low" style="color: green;">🟢 Low</option>
+                        <option value="medium" style="color: yellow;">🟡 Medium</option>
+                        <option value="high" style="color: red;">🔴 High</option>
                 </select>
 
                 <h3>Assignee:</h3>
@@ -497,15 +524,17 @@ function renderTaskTable() {
         const priorityText = task.priority;
         const priorityElement = document.createElement('span');
         priorityElement.textContent = priorityText;
+        if (priority === 'Low') {
+        row.style.backgroundColor = 'green';
+        row.style.color = 'white';
+    } else if (priority === 'Medium') {
+        row.style.backgroundColor = 'yellow';
+        row.style.color = 'black';
+    } else if (priority === 'High') {
+        row.style.backgroundColor = 'red';
+        row.style.color = 'white';
+    }
 
-        // Apply color based on priority
-        if (priorityText === "Low") {
-            priorityElement.style.color = "green";  // Green for low priority
-        } else if (priorityText === "Medium") {
-            priorityElement.style.color = "orange";  // Orange for medium priority
-        } else if (priorityText === "High") {
-            priorityElement.style.color = "red";  // Red for high priority
-        }
 
         priorityCell.appendChild(priorityElement);
 
