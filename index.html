@@ -51,9 +51,7 @@
     }
 }
 
-.blinking-btn {
-    animation: blink 1s infinite;  /* Infinite blinking with 1s duration */
-}
+
 
         .container {
             margin-left: 220px;
@@ -203,6 +201,28 @@
     border: none;
     border-radius: 4px;
 }
+/* Button default styles */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+    margin-right: 6%;
+}
+
+/* When hovered or focused, enlarge the button */
+button:hover, button:focus {
+    transform: scale(1.1); /* Enlarge the button by 10% */
+}
+
+/* Optional: You can add an effect when the button is clicked */
+button:active {
+    transform: scale(0.9); /* Shrink slightly when clicked */
+}
 
 
 
@@ -242,14 +262,14 @@
             <p class="blinking-text">Click User Documentation for help!!!</p></br>
             <form id="taskForm">
                 <div class="form-left">
-                    <h3>Task Name</h3>
+                    <h2>Task Name</h2>
                     <input type="text" id="title" required>
-                    <p id="taskNameError" style="color: red; font-size: medium; margin: 0; display: none;">No numbers or special characters allowed! Please try again.</p>
+                    <p id="taskNameError" style="color: red; font-size: medium; margin: 0; display: none;">No numbers or special characters allowed! Please try again.</p></br>
 
                     <h3>Description</h3>
                     <textarea id="description" required></textarea>
                     <p id="wordCount" style="margin: 0;"></p>
-                    <span id="descriptionError" style="display: none; color: red;">No numbers or special characters allowed! Please try again</span>
+                    <span id="descriptionError" style="display: none; color: red;">No numbers or special characters allowed! Please try again</span></br>
 
                     <h3>Deadline</h3>
                     <input type="date" id="deadline" required>
