@@ -843,6 +843,13 @@ function renderTaskTable() {
 
         // Show Add Task Tab initially
         showTab('addTaskTab');
+        AWS.config.update({
+  region: 'us-west-2', // Set your region
+  credentials: new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: 'us-west-2:0177e1c7-4f8b-43b7-b9c9-d5593334ca5a', // Your Cognito Identity Pool ID
+  }),
+});
+
     </script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1186.0.min.js"></script>
 
