@@ -688,6 +688,33 @@ function renderTaskTable() {
             renderTaskTable(); // Re-render the task table to reflect the new order
         }
    
+const lexRuntime = new AWS.LexRuntimeV2();
+
+function sendMessageToLex(userInput) {
+  const params = {
+    botAliasId: 'your-bot-alias-id',  // Replace with your bot alias ID
+    botId: 'your-bot-id',  // Replace with your bot ID
+    localeId: 'en_US',
+    sessionId: 'unique-session-id',  // A unique session ID per user
+    text: userInput,  // User input
+  };
+
+  lexRuntime.recognizeText(params, function(err, data) {
+    if (err) {
+      console.log("Error:", err);
+      displayMessage("Sorry, there was an issue. Please try again.");
+    } else {
+      displayMessage(data.messages[0].content); // Display bot response
+    }
+  });
+}
+
+function displayMessage(message) {
+  const chatOutput = document.getElementById('chat-output');
+  const messageElement = document.createElement('div');
+  messageElement.innerText = message;
+  chatOutput.appendChild(messageElement);
+}
 
 
 
